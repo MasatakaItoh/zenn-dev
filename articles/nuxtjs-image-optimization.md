@@ -3,7 +3,7 @@ title: "Nuxt.jsにおける画像最適化（画像圧縮とWebP変換）"
 emoji: "🎨"
 type: "tech"
 topics: ["Nuxt.js", "Vue.js", "JavaScript", "WebP"]
-published: true
+published: false
 ---
 ## 手順
 
