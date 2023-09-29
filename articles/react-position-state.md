@@ -1,7 +1,6 @@
 ---
 title: "Reactコンポーネントの位置と状態の関係性"
 emoji: "🫠"
-
 type: "tech"
 topics: ["React"]
 published: true
