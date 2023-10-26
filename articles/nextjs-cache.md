@@ -27,7 +27,7 @@ Next.jsでは、[fetch](https://nextjs.org/docs/app/api-reference/functions/fetc
 
 ## Data Cache
 
-Next.jsは、fetchした結果をData Cacheとしてキャッシュします。fetchによりデータソースにリクエストした結果はData Cacheに保存され、以降同一リクエストはData Cacheから返されます。つまりData Cacheの役割は、**オリジンデータソースへのリクエスト数を減らすこと**です。
+Next.jsは、fetchした結果をData Cacheとして保存します。fetchによりデータソースにリクエストした結果はData Cacheに保存され、以降同一リクエストはData Cacheから返されます。つまりData Cacheの役割は、**オリジンデータソースへのリクエスト数を減らすこと**です。
 
 また、Data Cacheは永続的で複数デプロイ間にわたって有効なので、再デプロイしてもキャッシュは破棄されません。なので一定期間や特定のタイミングでキャッシュを破棄するために[fetchオプション](https://nextjs.org/docs/app/api-reference/functions/fetch#optionsnextrevalidate)などによる再検証が用意されています。先ほどのReact Cacheはレンダリングごとに自動的にキャッシュが破棄されましたが、キャッシュされる期間が大きく異なるので混同しないように注意しましょう。
 
@@ -35,8 +35,8 @@ React Cacheと合わせると、以下のような挙動を取ります。
 
 ![](https://nextjs.org/_next/image?url=%2Fdocs%2Fdark%2Fdata-cache.png&w=3840&q=75&dpl=dpl_8ryKRR41mbmmJprfJDzPycmyzNEP)
 
-- メモリのキャッシュの有無を確認し、あればメモリからデータが返却し、なければData Cacheの有無を確認します。
-- 同様にData CacheがあればData Cacheからデータが返却し、なければオリジンデータソースへのリクエストを実行します。
+- メモリのキャッシュの有無を確認し、あればメモリからデータを返却し、なければData Cacheの有無を確認します。
+- 同様にData CacheがあればData Cacheからデータを返却し、なければオリジンデータソースへのリクエストを実行します。
 - リクエストの結果はメモリとData Cacheそれぞれに保存されます。
 - fetchオプションとして`{ cache: 'no-store' }`を指定すると、Data Cacheへの保存はスキップされます。
 - メモリのキャッシュはレンダリングごとに破棄されるので、レンダリングごとに必ず一回はData Cacheへのリクエストを実行します。
@@ -64,7 +64,7 @@ Router Cacheは4つのキャッシュの中で唯一クライアントサイド�
 
 ![](https://nextjs.org/_next/image?url=%2Fdocs%2Fdark%2Frouter-cache.png&w=3840&q=75&dpl=dpl_8ryKRR41mbmmJprfJDzPycmyzNEP)
 
-Router Cacheはユーザーセッション中で有効なので、リロードするとキャッシュが破棄されます。また、時間経過によっても破棄されます。静的ルートは5分、動的ルートは30秒、キャッシュに保存されます。
+Router Cacheはユーザーセッション中で有効なので、リロードするとキャッシュが破棄されます。また、時間経過によっても破棄されます。静的レンダリングは5分、動的レンダリングは30秒、キャッシュに保存されます。
 
 ## まとめ
 
@@ -81,5 +81,5 @@ Router Cacheはユーザーセッション中で有効なので、リロード�
 
 1. 前提として、React Cacheによりサーバーサイドでのリクエストの総数を削減（＝リクエストをメモ化）している。
 2. リクエストをメモ化した上で、Data Cacheによりオリジンデータリソースへのリクエスト数を削減している。
-3. そもそも静的ルートに関しては、1と2をビルドと再検証時に実行し、その結果をFull Route Cacheとしてキャッシュしているのでレンダリングコストが少なくて済む。
+3. そもそも静的ルートに関しては、1と2をビルドと再検証時に実行し、その結果をFull Route Cacheとして保存しているのでレンダリングコストが少なくて済む。
 4. Router Cacheにより、静的ルートも動的ルートもナビゲーションのUXが良い。
