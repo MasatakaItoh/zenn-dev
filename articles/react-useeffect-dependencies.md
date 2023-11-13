@@ -1,5 +1,5 @@
 ---
-title: "useEffectの依存配列"
+title: "依存配列の不足したuseEffectを作らないための考え方"
 emoji: "🐙"
 type: "tech"
 topics: ["React","useEffect"]
