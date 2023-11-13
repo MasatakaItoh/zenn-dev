@@ -34,7 +34,7 @@ useEffect(() => {
 
 そこで**一度useEffectなしでロジックを作ってしまい、あとからuseEffectでラップする**という考え方をすると、依存関係を正しく指定することができます。
 
-## useEffectの正しい使い方
+## 正しいuseEffectの作り方
 
 1. 「`value`が変わったときに`doSomething`を実行する」というロジックをuseEffectなしで作る
 
