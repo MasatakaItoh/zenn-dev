@@ -70,9 +70,10 @@ const secondQuery = useSuspenseQuery({ queryKey: ['second'], queryFn: fetchSecon
 </Suspense>
 ```
 
-## まとめ
 
-今回の例はシンプルでSuspense境界がわかりやすかったですが、実際のアプリケーションは複雑で気付かぬうちにリクエストウォーターフォールを発生していることがあります。
+## まとめ
+今回の例はシンプルでSuspense境界がわかりやすいですが、実際のアプリケーションは複雑で気付かぬうちにリクエストウォーターフォールを発生していることがあります。
+例えば`useSuspenseQueries`を活用しても、それがまた別のクエリと同じSuspense境界に配置されているとリクエストウォーターフォールが発生するなど...
 
 レイテンシの大きいクライアントサイドフェッチにおいては、リクエストウォーターフォールがパフォーマンスに与える影響は大きいです。
 リクエストウォーターフォールの有無は Developer Tools の Network タブを確認すればすぐにわかるのでチェックしつつ、`useSuspenseQuery`と`useSuspenseQueries`を活用していきましょう！
