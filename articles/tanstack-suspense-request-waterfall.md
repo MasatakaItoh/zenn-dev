@@ -7,7 +7,7 @@ published: true
 publication_name: "frontendflat"
 ---
 
-Tanstack Query v5 から Suspense によるデータ取得が安定板となったことで`useSuspenseQuery`を使い始めた方もいるのではないでしょうか。
+Tanstack Query v5 から Suspense によるデータ取得が安定版となったことで`useSuspenseQuery`を使い始めた方もいるのではないでしょうか。
 
 今回はそんな`useSuspenseQuery`を使う上で、リクエストウォーターフォールを発生させないために気をつけるべきことをご紹介します。
 
