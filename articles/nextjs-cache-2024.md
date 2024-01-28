@@ -52,13 +52,16 @@ Next.jsアプリケーションから直接DBにリクエストする、つま�
 その場合、Next.jsが提供するunstable_cacheを使用することで、キャッシュやその再検証を実装することになります。第三引数にはオプションを指定可能で、`tags`や`revalidate`を指定することで、サーバーサイドfetchで実現できた任意のタイミングでの再検証や時間による再検証（ISR）も実現できます。
 
 ```ts
-const getCachedUser = unstable_cache(
-  async (id) => getUser(id),
+const useGetCachedUser = (id: string) => unstable_cache(
+  async () => getUser(id),
   [`user-${id}`],
   {
     tags: [`user-${id}`],
   }
 );
+
+const getCachedUser = useGetCachedUser('123');
+const user = await getCachedUser();
 ```
 
 https://nextjs.org/docs/app/api-reference/functions/unstable_cache
