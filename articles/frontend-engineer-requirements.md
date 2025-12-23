@@ -4,6 +4,7 @@ emoji: "🌟"
 type: "idea"
 topics: ["フロントエンド"]
 published: true
+publication_name: "frontendflat"
 ---
 
 ## はじめに
